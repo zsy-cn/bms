@@ -1,0 +1,22 @@
+syntax="proto3";
+package protos;
+
+message Empty{}
+
+message Pagination {
+    uint64 Page = 1;
+    uint64 PageSize = 2;
+    string SortBy = 3;
+    bool Order = 4;
+}
+
+// 通用delete请求
+message DeleteRequest {
+    uint64 ID = 1;
+}
+
+message DeviceCountInfo {
+    uint64 Amount = 1;
+	uint64 Alive = 2;
+	uint64 Alarm = 3;
+}

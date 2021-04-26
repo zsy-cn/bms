@@ -1,0 +1,49 @@
+syntax="proto3";
+package protos;
+
+// 环境数据分段平均值
+message EnvironMonitorSectionAverageData {
+    string Section = 1;
+    double Temperature = 2;
+    double PM025 = 3;
+    double Noise = 4;
+    double Humidity = 5;
+}
+
+message EnvironMonitorDevice {
+    uint64 ID = 1;
+    string Name = 2;
+    string SerialNumber = 3;
+    string Description = 4;
+    string Position = 5;
+
+    string Group = 11;
+    uint64 GroupID = 12;
+    string DeviceType = 13;
+    uint64 DeviceTypeID = 14;
+    string DeviceModel = 15;
+    uint64 DeviceModelID = 16;
+    string Customer = 17;
+    uint64 CustomerID = 18;
+
+    double Latitude = 21;
+    double Longitude = 22;
+    uint64 StatusCode = 23;
+    string Status = 24;
+    string Actived = 25; // 本来应该是bool类型, 但是false类型的字段不显示, 干脆用string表示好了
+    string CreatedAt = 26;
+    
+    double Temperature = 30;
+    double PM025 = 31;
+    double Noise = 32;
+    double Humidity = 33;
+}
+
+message EnvironMonitorDeviceList {
+    repeated EnvironMonitorDevice List = 1;
+    uint64 Count = 2;
+
+    uint64 CurrentPage = 10;
+    uint64 PageSize = 11;
+    uint64 TotalCount = 12;
+}

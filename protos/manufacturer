@@ -1,0 +1,16 @@
+syntax="proto3";
+package protos;
+
+message Manufacturer {
+    uint64 ID = 1;
+    string Name = 2;
+}
+
+message ManufacturerList {
+    repeated Manufacturer List = 1;
+    uint64 Count = 2;
+}
+
+message GetManufacturersRequest {
+
+}

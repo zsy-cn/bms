@@ -1,0 +1,48 @@
+syntax="proto3";
+package protos;
+
+import "common";
+
+service LoraclientService {
+    rpc AddCustmoer(LoraclientCustormer) returns(protos.LoraclientAddCustormerResponse);
+    rpc UpdateCustomer(LoraclientUpdateCustormerRequest) returns(protos.Empty);
+    rpc DeleteCustmoer(LoraclientDeleteCustomerRequest) returns(protos.Empty);
+    rpc AddSensor(LoraclientSensor) returns(protos.Empty);
+    rpc UpdateSensor(LoraclientSensor) returns(protos.Empty);
+    rpc DeleteSensor(LoraclientSensor) returns(protos.Empty);
+}
+
+message LoraclientCustormer {
+    string OrgName = 1;         // model.Path
+    string OrgDisplayName = 2;  // model.Title
+    string UserName = 3;        // model.Path
+    string Passwd = 4;        // model.Passwd2
+}
+
+message LoraclientAddCustormerResponse {
+    int64 OrgID = 1;
+    int64 UserID = 2;
+}
+
+message LoraclientUpdateCustormerRequest {
+    int64  OrgID = 1;
+    string OrgName = 2;         // model.Path
+    string OrgDisplayName = 3;  // model.Title
+
+    int64 UserID = 11;
+    string UserName = 12;        // model.Path
+    string Passwd = 13;        // model.Passwd2
+}
+
+message LoraclientDeleteCustomerRequest {
+    int64 OrgID = 1;
+    int64 UserID = 2;
+}
+
+message LoraclientSensor {
+    string OrgDisplayName = 1;
+    string Type = 2; // 传感器类型, model.Key
+    string Name = 3;
+    string DevEUI = 4;
+    string AppKey = 5;
+}

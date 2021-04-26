@@ -1,0 +1,11 @@
+syntax="proto3";
+package protos;
+
+message ManagerSession {
+    uint64 ID = 1;
+    string Name = 2;
+    string DisplayName = 3;
+    uint64 RoleID = 4;
+    string Role = 5;
+    // 之后还包括权限
+}

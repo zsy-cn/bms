@@ -1,0 +1,60 @@
+syntax="proto3";
+package protos;
+
+message WifiDeviceGroup {
+    uint64 ID = 1;
+    string Name = 2;
+    uint64 CustomerID = 3;
+    uint64 DeviceTypeID = 4;
+    string CreatedAt = 5;
+
+    uint64 DeviceTotal = 11;
+    uint64 DeviceOn = 12;
+    uint64 DeviceOff = 13;
+}
+
+message WifiDeviceGroupList{
+    repeated WifiDeviceGroup List = 1;
+    uint64 Count = 2;
+
+    uint64 CurrentPage = 10;
+    uint64 PageSize = 11;
+    uint64 TotalCount = 12;
+}
+
+message WifiDevice {
+    uint64 ID = 1;
+    string Name = 2;
+    string SerialNumber = 3;
+    string Description = 4;
+    string Position = 5;
+
+    string Group = 11;
+    uint64 GroupID = 12;
+    string DeviceType = 13;
+    uint64 DeviceTypeID = 14;
+    string DeviceModel = 15;
+    uint64 DeviceModelID = 16;
+    string Customer = 17;
+    uint64 CustomerID = 18;
+
+    double Latitude = 21;
+    double Longitude = 22;
+    uint64 StatusCode = 23;
+    string Status = 24;
+    string CreatedAt = 25;
+
+    uint64 Connections = 31; // 用户连接数
+    string UpSpeed = 32; // 上传速度 
+    string DownSpeed = 33; // 下载速度
+    string DataTraffic = 34; // 消耗数据流量
+}
+
+message WifiDeviceList {
+    repeated WifiDevice List = 1;
+    uint64 Count = 2;
+
+    uint64 CurrentPage = 10;
+    uint64 PageSize = 11;
+    uint64 TotalCount = 12;
+}

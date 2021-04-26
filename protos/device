@@ -1,0 +1,107 @@
+syntax="proto3";
+package protos;
+
+import "common";
+
+service DeviceService {
+    rpc GetList(GetDevicesRequest) returns(protos.DeviceList);
+    rpc Add(Device) returns(protos.Empty);
+    rpc Update(Device) returns(protos.Empty);
+    rpc Delete(DeleteDeviceRequest) returns(protos.Empty);
+}
+
+message Device {
+    uint64 ID = 1;
+    string Name = 2;
+    string SerialNumber = 3;
+    string Description = 4;
+    string Position = 5;
+    
+    string Group = 11;
+    uint64 GroupID = 12;
+    string DeviceType = 13;
+    uint64 DeviceTypeID = 14;
+    string DeviceModel = 15;
+    uint64 DeviceModelID = 16;
+    string Customer = 17;
+    uint64 CustomerID = 18;
+
+    uint32 StatusCode = 21;
+    string Status = 22;
+    double Latitude = 23;
+    double Longitude = 24;
+    string Actived = 25; // 本来应该是bool类型, 但是false类型的字段不显示, 干脆用string表示好了
+    string CreatedAt = 26;
+
+    ExtraDeviceInfo ExtraInfo = 30;
+}
+
+message DeviceList {
+    repeated Device List = 1;
+    uint64 Count = 2;
+
+    uint64 CurrentPage = 10;
+    uint64 PageSize = 11;
+    uint64 TotalCount = 12;
+}
+
+message GetDevicesRequest {
+    protos.Pagination Pagination = 1;
+    uint64 CustomerID = 10;
+    uint64 DeviceTypeID = 11;
+    uint64 GroupID = 12;
+    uint64 DeviceModelID = 13;
+
+    string Group = 20; // 分组名称, 用like进行模糊查询
+}
+
+// json字符串, 保存有不同种类的特定字段, 由Device服务解析
+message ExtraDeviceInfo {
+    string Info = 1;
+}
+
+message DeleteDeviceRequest {
+    uint64 ID = 1;
+}
+
+message DeleteGroupDeviceRequest {
+    uint64 GroupID = 1;
+}
+
+message SafetyDevice {
+    uint64 ID = 1;
+    string Name = 2;
+    string SerialNumber = 3;
+    string Description = 4;
+    string Position = 5;
+
+    string Group = 11;
+    uint64 GroupID = 12;
+    string DeviceType = 13;
+    uint64 DeviceTypeID = 14;
+    string DeviceModel = 15;
+    uint64 DeviceModelID = 16;
+    string Customer = 17;
+    uint64 CustomerID = 18;
+
+    double Latitude = 21;
+    double Longitude = 22;
+    string Actived = 25; // 本来应该是bool类型, 但是false类型的字段不显示, 干脆用string表示好了
+    string CreatedAt = 26;
+
+    uint64 StatusCode = 31;
+    string Status = 32;
+    uint64 MID = 33; // 最近的消息id(可为空)
+    string UplinkAt = 34;
+    uint64 NID = 35; // 最近的警告id(可为空)
+    string AlertAt = 36;
+}
+
+message SafetyDeviceList {
+    repeated SafetyDevice List = 1;
+    uint64 Count = 2;
+
+    uint64 CurrentPage = 10;
+    uint64 PageSize = 11;
+    uint64 TotalCount = 12;
+}

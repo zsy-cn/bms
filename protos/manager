@@ -1,0 +1,26 @@
+syntax="proto3";
+package protos;
+
+service ManagerService {
+    rpc Login(ManagerLoginRequest) returns(protos.ManagerLoginResponse);
+}
+
+message Manager {
+    uint64 ID = 1;
+    string Name = 2;
+    string Passwd = 3;
+    string DisplayName = 4;
+    string Phone = 5;
+    uint64 RoleID = 6;
+}
+
+message ManagerLoginRequest {
+    string UserName = 1;
+    string Password = 2;
+}
+
+message ManagerLoginResponse {
+    uint64 ID = 1;
+    string Name = 2;
+    uint64 RoleID = 3;
+}

@@ -1,0 +1,10 @@
+version: '2'
+services:
+    postgres:
+        image: postgres:9
+        environment:
+        - "POSTGRES_USER=backend"
+        - "POSTGRES_PASSWORD=backend"
+        - "POSTGRES_DB=backend"
+        ports:
+        - "5432:5432"

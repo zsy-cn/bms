@@ -1,0 +1,30 @@
+syntax="proto3";
+package protos;
+
+import "common";
+import "group";
+import "manufacturer";
+import "device_type";
+import "device_model";
+
+service CoreService {
+    rpc GetGroupList(protos.GetGroupsRequest) returns(protos.GroupList);
+    rpc AddGroup(protos.Group) returns(protos.Empty);
+    rpc UpdateGroup(protos.Group) returns(protos.Empty);
+    rpc DeleteGroup(protos.DeleteGroupRequest) returns(protos.Empty);
+
+    rpc GetManufacturerList(protos.GetManufacturersRequest) returns(protos.ManufacturerList);
+    rpc AddManufacturer(protos.Manufacturer) returns(protos.Empty);
+    rpc UpdateManufacturer(protos.Manufacturer) returns(protos.Empty);
+    rpc DeleteManufacturer(protos.DeleteRequest) returns(protos.Empty);
+
+    rpc GetDeviceTypeList(protos.GetDeviceTypesRequest) returns(protos.DeviceTypeList);
+    rpc AddDeviceType(protos.DeviceType) returns(protos.Empty);
+    rpc UpdateDeviceType(protos.DeviceType) returns(protos.Empty);
+    rpc DeleteDeviceType(protos.DeleteRequest) returns(protos.Empty);
+
+    rpc GetDeviceModelList(protos.GetDeviceModelsRequest) returns(protos.DeviceModelList);
+    rpc AddDeviceModel(protos.DeviceModel) returns(protos.Empty);
+    rpc UpdateDeviceModel(protos.DeviceModel) returns(protos.Empty);
+    rpc DeleteDeviceModel(protos.DeleteRequest) returns(protos.Empty);
+}

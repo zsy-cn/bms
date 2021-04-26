@@ -1,0 +1,19 @@
+syntax="proto3";
+package protos;
+
+message DeviceType {
+    uint64 ID = 1;
+    string Key = 2;
+    string Name = 3;
+    bool IsSensor = 4;
+    repeated string Properties = 10;
+}
+
+message DeviceTypeList {
+    repeated DeviceType List = 1;
+    uint64 Count = 2;
+}
+
+message GetDeviceTypesRequest {
+
+}

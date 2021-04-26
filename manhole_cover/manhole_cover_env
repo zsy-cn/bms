@@ -1,0 +1,2 @@
+export DB_DIALECT="postgres"
+export DB_PARAMS="user=backend password=backend dbname=backend sslmode=disable host=localhost port=1234"

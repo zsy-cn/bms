@@ -1,0 +1,31 @@
+syntax="proto3";
+package protos;
+
+// import "common";
+
+message Group {
+    uint64 ID = 1;
+    string Name = 2;
+    uint64 DeviceTypeID = 3;
+    uint64 CustomerID = 4;
+    uint32 Status = 10;
+    string DeviceType = 11;
+    string CustomerTitle = 12; // Customer Title
+
+    // 这是响应体中才有的字段, 之后应该分开定义
+    uint64 DeviceCount = 20;
+}
+
+message GroupList {
+    repeated Group List = 1;
+    uint64 Count = 2;
+}
+
+// 不分页
+message GetGroupsRequest {
+    uint64 CustomerID = 1; // 必选
+}
+
+message DeleteGroupRequest {
+    uint64 ID = 1;
+}

@@ -1,0 +1,33 @@
+syntax="proto3";
+package protos;
+
+import "common";
+
+service ParserHubService {
+    rpc ParseAndSave(ParserHubUplinkMsg) returns (protos.Empty);
+}
+
+// lora-app-server的DataUpPayload结构, 上行信息的回调请求数据
+message ParserHubUplinkMsg{
+    string applicationID = 1;
+    string applicationName = 2;
+    string deviceName = 3;
+    string devEUI = 4;
+    string deviceStatusBattery = 5;
+    string deviceStatusMargin = 6;
+    uint32 fPort = 7;
+    string data = 10;
+    bytes FinalData = 20;
+}
+
+message ParserHubUplinkMsgPayload{
+    bytes data = 1;
+}
+
+message ParserHubDecodedMsg{
+    string data = 1;
+}
+
+message ParserHealthCheckResponse{
+    string msg = 1;
+}

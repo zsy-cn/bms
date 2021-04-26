@@ -1,0 +1,33 @@
+syntax="proto3";
+package protos;
+
+import "common";
+
+service ContactService {
+    rpc Get(GetContactRequest)returns(Contact);
+    rpc GetList(GetContactsRequest)returns(protos.ContactList);
+    rpc Add(Contact) returns(protos.Empty);
+    rpc Update(Contact) returns(protos.Empty);
+    rpc Delete(Contact) returns(protos.Empty);
+}
+
+message Contact {
+    uint64 ID = 1;
+    uint64 CustomerID = 2;
+    string Name = 3;
+    string Phone = 4;
+    string Email = 5;
+}
+
+message ContactList {
+    repeated Contact List = 1;
+    uint64 Count = 2;
+}
+
+message GetContactsRequest {
+    uint64 CustomerID = 1;
+}
+
+message GetContactRequest {
+    uint64 ID = 1;
+}

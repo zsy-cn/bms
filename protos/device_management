@@ -1,0 +1,57 @@
+syntax="proto3";
+package protos;
+
+import "common";
+
+message GetDevicesRequestForCustomer {
+    protos.Pagination Pagination = 1;
+    uint64 CustomerID = 10;
+    uint64 DeviceTypeID = 11;
+    uint64 GroupID = 12;
+    uint64 DeviceModelID = 13;
+    string SerialNumber = 14;
+    string Group = 20; // 分组名称, 用like进行模糊查询
+}
+
+message DeviceWithAlarmThreshold {
+    uint64 ID = 1;
+    string Name = 2;
+    string Position = 3;
+    string SerialNumber = 4;
+    uint64 GroupID = 5;
+    string Group = 6;
+    uint64 DeviceModelID = 7;
+    string DeviceModel = 8;
+
+    string CreatedAt = 11;
+
+    repeated double AlarmThresholds = 20;
+}
+
+message AlarmThresholdList {
+    uint64 Count = 1;
+    repeated DeviceWithAlarmThreshold List = 2;
+
+    uint64 CurrentPage = 10;
+    uint64 PageSize = 11;
+    uint64 TotalCount = 12;
+}
+
+message SetAlarmThresholdRequest {
+    string DeviceSN = 1;
+    uint64 CustomerID = 2;
+    uint64 DeviceTypeID = 3;
+    repeated double AlarmThresholds = 4;
+}
+
+message DeviceGroupByType {
+    uint64 ID = 1;   // 设备分类ID
+    string Name = 2; // 分类名称
+    string Key = 3;
+    uint64 Count = 4;
+}
+
+message GetDeviceGroupsByTypeResponse {
+    uint64 Count = 1;
+    repeated DeviceGroupByType List = 2;
+}

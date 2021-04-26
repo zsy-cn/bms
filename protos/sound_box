@@ -1,0 +1,96 @@
+syntax="proto3";
+package protos;
+
+import "common";
+
+message GetSoundBoxMediasRequest {
+    protos.Pagination Pagination = 1;
+    string Name = 2;
+    uint64 CustomerID = 3;
+}
+
+message SoundBoxMedia {
+    uint64 ID = 1;
+    string	Name = 2;
+	uint64 CustomerID = 3;
+	string Duration = 4;
+	uint64 Size = 5;
+	string Path = 6;
+    string CreatedAt = 11;
+}
+
+message GetSoundBoxMediasResponse {
+    repeated SoundBoxMedia List = 1;
+    uint64 Count = 2;
+
+    uint64 CurrentPage = 10;
+    uint64 PageSize = 11;
+    uint64 TotalCount = 12;
+}
+
+message UpdateSoundBoxMediaRequest {
+    uint64 ID = 1;
+    string Name = 2;
+    uint64 CustomerID = 3;
+}
+
+message GetSoundBoxDeviceGroupsRequest{
+    protos.Pagination Pagination = 1;
+    uint64 CustomerID = 2;
+    string Name = 3;
+}
+
+message SoundBoxDeviceGroup {
+    uint64 ID = 1;
+    string Name = 2;
+    uint64 CustomerID = 3;
+    string Status = 4; // 关闭/播放中
+    
+    uint64 DeviceTotal = 11;
+    uint64 DeviceOn = 12;
+    uint64 DeviceOff = 13;
+}
+
+message SoundBoxDeviceGroupList{
+    repeated SoundBoxDeviceGroup List = 1;
+    uint64 Count = 2;
+
+    uint64 CurrentPage = 10;
+    uint64 PageSize = 11;
+    uint64 TotalCount = 12;
+}
+
+message SoundBoxDevice {
+    uint64 ID = 1;
+    string Name = 2;
+    string SerialNumber = 3;
+    string Description = 4;
+    string Position = 5;
+
+    string Group = 11;
+    uint64 GroupID = 12;
+    string DeviceType = 13;
+    uint64 DeviceTypeID = 14;
+    string DeviceModel = 15;
+    uint64 DeviceModelID = 16;
+    string Customer = 17;
+    uint64 CustomerID = 18;
+
+    double Latitude = 21;
+    double Longitude = 22;
+    uint64 StatusCode = 23;
+    string Status = 24;
+    string Actived = 25; // 本来应该是bool类型, 但是false类型的字段不显示, 干脆用string表示好了
+    string CreatedAt = 26;
+    
+    double Volume = 30; // 音量
+}
+
+message SoundBoxDeviceList {
+    repeated SoundBoxDevice List = 1;
+    uint64 Count = 2;
+
+    uint64 CurrentPage = 10;
+    uint64 PageSize = 11;
+    uint64 TotalCount = 12;
+}

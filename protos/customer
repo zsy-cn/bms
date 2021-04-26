@@ -1,0 +1,39 @@
+syntax="proto3";
+package protos;
+
+import "common";
+import "contact";
+
+service CustomerService {
+    rpc Get(GetCustomerRequest) returns(protos.Customer);
+    rpc GetList(GetCustomersRequest) returns(protos.CustomerList);
+    rpc Add(Customer) returns(protos.Empty);
+    rpc Update(Customer) returns(protos.Empty);
+    rpc Delete(Customer) returns(protos.Empty);
+}
+
+message Customer {
+    uint64 ID = 1;
+    string Name = 2;
+    string Passwd1 = 3;
+    string Passwd2 = 4;
+    string Title = 5;
+    string Address = 6;
+    string Path = 7;
+    bool Enable = 8;
+
+    repeated protos.Contact Contacts = 20;
+}
+
+message CustomerList {
+    repeated Customer List = 1;
+    uint64 Count = 2;
+}
+
+message GetCustomerRequest {
+    uint64 ID = 1;
+}
+
+message GetCustomersRequest {
+    protos.Pagination Pagination = 1;
+}

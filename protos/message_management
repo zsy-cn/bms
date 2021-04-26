@@ -1,0 +1,28 @@
+syntax="proto3";
+package protos;
+
+message NotificationInfo {
+    uint64 ID = 1;
+    string DeviceName = 2;
+    string DeviceSerialNumber = 3;
+    string DeviceType = 4;
+    uint64 DeviceTypeID = 5;
+    string DeviceModel = 6;
+    uint64 DeviceModelID = 7;
+    string Group = 8;
+    uint64 GroupID = 9;
+    string CreatedAt = 10;
+
+    string Content = 11;
+    string Solved = 12; // "true"/"false"
+    string SolvedAt = 13; // 警告解除时间
+}
+
+message NotificationList {
+    repeated NotificationInfo List = 1;
+    uint64 Count = 2;
+
+    uint64 CurrentPage = 10;
+    uint64 PageSize = 11;
+    uint64 TotalCount = 12;
+}

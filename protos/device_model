@@ -1,0 +1,19 @@
+syntax="proto3";
+package protos;
+
+message DeviceModel {
+    uint64 ID = 1;
+    string Name = 2;
+    string Description = 3;
+    uint64 ManufacturerID = 10;
+    uint64 DeviceTypeID = 11;
+}
+
+message DeviceModelList {
+    repeated DeviceModel List = 1;
+    uint64 Count = 2;
+}
+
+message GetDeviceModelsRequest {
+
+}

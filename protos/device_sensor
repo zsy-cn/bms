@@ -1,0 +1,22 @@
+syntax="proto3";
+package protos;
+
+import "common";
+
+service DeviceSensorService {
+    rpc Add(DeviceSensor) returns(protos.Empty);
+    rpc Update(DeviceSensor) returns(protos.Empty);
+    rpc Delete(DeviceSensor) returns(protos.Empty);
+}
+
+message DeviceSensor {
+    string DeviceSN = 1;
+    string Name = 2;
+    string DevEUI = 11;
+    string AppEUI = 12;
+    string AppKey = 13;
+    string Freq = 14;
+
+    uint64 CustomerID = 21;
+    uint64 DeviceTypeID = 22;
+}

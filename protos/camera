@@ -1,0 +1,27 @@
+syntax="proto3";
+package protos;
+
+import "common";
+
+service CameraService {
+    rpc GetAccessToken(protos.Empty)returns(GetAccessTokenResponse);
+    rpc GetMainScreen(GetMainScreenRequest)returns(GetMainScreenResponse);
+    rpc SetMainScreen(SetMainScreenRequest)returns(protos.Empty);
+}
+
+message GetAccessTokenResponse {
+    string AccessToken = 1;
+}
+
+message GetMainScreenRequest {
+    string SessionID = 1;
+}
+
+message GetMainScreenResponse {
+    string CameraID = 1;
+}
+
+message SetMainScreenRequest {
+    string CameraID = 1;
+    string SessionID = 2;
+}

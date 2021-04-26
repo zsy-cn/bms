@@ -1,0 +1,94 @@
+syntax="proto3";
+package protos;
+
+import "common";
+
+message GetTrashCanDeviceGroupsRequest{
+    protos.Pagination Pagination = 1;
+    uint64 CustomerID = 2;
+    string Name = 3;
+}
+
+message TrashCanDeviceGroup {
+    uint64 ID = 1;
+    string Name = 2;
+    uint64 CustomerID = 3;
+    uint64 DeviceTotal = 4;
+    uint64 DeviceOn = 5;
+    uint64 DeviceOff = 6;
+}
+
+message GetTrashCanDeviceGroupsResponse{
+    repeated TrashCanDeviceGroup List = 1;
+    uint64 Count = 2;
+
+    uint64 CurrentPage = 10;
+    uint64 PageSize = 11;
+    uint64 TotalCount = 12;
+}
+
+// 与普通Device结构相比, TrashcanDevice多了一个占用率字段
+message TrashcanDevice {
+    uint64 ID = 1;
+    string Name = 2;
+    string SerialNumber = 3;
+    string Description = 4;
+    string Position = 5;
+
+    string Group = 11;
+    uint64 GroupID = 12;
+    string DeviceType = 13;
+    uint64 DeviceTypeID = 14;
+    string DeviceModel = 15;
+    uint64 DeviceModelID = 16;
+    string Customer = 17;
+    uint64 CustomerID = 18;
+
+    double Latitude = 21;
+    double Longitude = 22;
+    uint64 StatusCode = 23;
+    string Status = 24;
+
+    double Percent = 30; // 占用率0-100
+}
+
+message TrashcanDeviceList {
+    repeated TrashcanDevice List = 1;
+    uint64 Count = 2;
+
+    uint64 CurrentPage = 10;
+    uint64 PageSize = 11;
+    uint64 TotalCount = 12;
+}
+
+message TrashcanAlarmThreshold {
+    double StageInfo = 1;
+    double StageWarn = 2;
+    double StageAlert = 3;
+}
+
+message TrashcanDeviceWithAlarmThreshold {
+    uint64 ID = 1;
+    string Name = 2;
+    string Position = 3;
+    string SerialNumber = 4;
+    uint64 GroupID = 5;
+    string Group = 6;
+    uint64 DeviceModelID = 7;
+    string DeviceModel = 8;
+
+    string CreatedAt = 11;
+
+    double StageInfo = 20;
+    double StageWarn = 21;
+    double StageAlert = 22;
+}
+
+message TrashcanAlarmThresholdList {
+    uint64 Count = 1;
+    repeated TrashcanDeviceWithAlarmThreshold List = 2;
+
+    uint64 CurrentPage = 10;
+    uint64 PageSize = 11;
+    uint64 TotalCount = 12;
+}
